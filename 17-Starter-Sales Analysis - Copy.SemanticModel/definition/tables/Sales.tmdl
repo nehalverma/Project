@@ -43,7 +43,7 @@ table Sales
 		isHidden
 		formatString: 0
 		lineageTag: 3df94a53-17cb-404b-86ed-57ce513353fa
-		summarizeBy: none
+		summarizeBy: count
 		sourceColumn: ProductKey
 
 		changedProperty = IsHidden

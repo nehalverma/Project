@@ -2,10 +2,6 @@ relationship c4007daa-09a5-455d-ac3b-d8338a0e4468
 	fromColumn: Sales.SalesTerritoryKey
 	toColumn: 'Sales Territory'.SalesTerritoryKey
 
-relationship fe440ad4-cbfb-4a8c-9b24-4d02f59a009f
-	fromColumn: Sales.ProductKey
-	toColumn: Product.ProductKey
-
 relationship ddc90e12-74d0-451e-87b6-3bc8d773bf07
 	crossFilteringBehavior: bothDirections
 	fromCardinality: one

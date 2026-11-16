@@ -8,13 +8,12 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
-annotation PBI_QueryOrder = ["Customer","Product","Reseller","Sales","Sales Order","Sales Territory"]
+annotation PBI_QueryOrder = ["Customer","Reseller","Sales","Sales Order","Sales Territory"]
 
 annotation PBI_ProTooling = ["DaxQueryView_Desktop","DevMode"]
 
 ref table Customer
 ref table 'Sales Territory'
-ref table Product
 ref table 'Sales Order'
 ref table Sales
 ref table Reseller
