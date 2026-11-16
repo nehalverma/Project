@@ -1,0 +1,36 @@
+DEFINE
+	VAR __DS0Core = 
+		SUMMARIZE('Customer', 'Customer'[Country-Region], 'Customer'[Customer ID])
+
+	VAR __DS0PrimaryWindowed = 
+		TOPN(201, SUMMARIZE(__DS0Core, 'Customer'[Country-Region]), 'Customer'[Country-Region], 1)
+
+	VAR __DS0SecondaryBase = 
+		SUMMARIZE(__DS0Core, 'Customer'[Customer ID])
+
+	VAR __DS0Secondary = 
+		TOPN(62, __DS0SecondaryBase, 'Customer'[Customer ID], 1)
+
+	VAR __DS0BodyLimited = 
+		NATURALLEFTOUTERJOIN(
+			__DS0PrimaryWindowed,
+			SUBSTITUTEWITHINDEX(
+				__DS0Core,
+				"ColumnIndex",
+				__DS0Secondary,
+				'Customer'[Customer ID],
+				ASC
+			)
+		)
+
+EVALUATE
+	__DS0Secondary
+
+ORDER BY
+	'Customer'[Customer ID]
+
+EVALUATE
+	__DS0BodyLimited
+
+ORDER BY
+	'Customer'[Country-Region], [ColumnIndex]
